@@ -53,3 +53,7 @@ sudo rm -rf /usr/local/share/powershell
 sudo rm -rf /usr/local/lib/android
 # sudo rm -rf /usr/local/lib/node_modules
 df -h
+
+sudo mkdir /mnt/bazel
+sudo choown runner:docker /mnt/bazel
+echo

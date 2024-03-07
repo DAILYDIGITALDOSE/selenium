@@ -144,6 +144,9 @@ jobs:
         run: sudo safaridriver --enable
       - name: Run Bazel
         run: ${{ inputs.run }}
+      - name: Print disk space
+        if: always() && inputs.os != 'windows'
+        run: df -kh
       - name: Start SSH session
         if: failure() && runner.debug == '1'
         uses: mxschmitt/action-tmate@v3
