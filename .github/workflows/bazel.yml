@@ -118,7 +118,7 @@ jobs:
         with:
           bazelrc: common --color=yes
       - if: inputs.use_mnt == true && inputs.os != 'windows'
-        run: echo "startup --output_base=/mnt/bazel" >> /home/runner/.bazelrc
+        run: echo "\nstartup --output_base=/mnt/bazel" >> /home/runner/.bazelrc
       - name: Setup Fluxbox and Xvfb
         if: inputs.os == 'ubuntu' && inputs.browser != ''
         run: |
