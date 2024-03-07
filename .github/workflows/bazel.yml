@@ -116,9 +116,9 @@ jobs:
         if: inputs.caching == false
         uses: p0deje/setup-bazel@0.6.0
         with:
-          bazelrc: common --color=yes
-      - if: inputs.use_mnt == true && inputs.os != 'windows'
-        run: echo "\nstartup --output_base=/mnt/bazel" >> /home/runner/.bazelrc
+          bazelrc: |
+            common --color=yes
+            startup --output_base=/mnt/bazel
       - name: Setup Fluxbox and Xvfb
         if: inputs.os == 'ubuntu' && inputs.browser != ''
         run: |
@@ -150,7 +150,6 @@ jobs:
         run: sudo safaridriver --enable
       - name: Run Bazel
         run: ${{ inputs.run }}
-      - run: df -kh
       - name: Print disk space
         uses: mxschmitt/action-tmate@v3
         with:
