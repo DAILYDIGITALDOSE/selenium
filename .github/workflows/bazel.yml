@@ -56,6 +56,10 @@ on:
         required: false
         type: string
         default: 'ignore-artifacts'
+      use_mnt:
+        required: false
+        type: boolean
+        default: false
 
 jobs:
   bazel:
@@ -113,6 +117,8 @@ jobs:
         uses: p0deje/setup-bazel@0.6.0
         with:
           bazelrc: common --color=yes
+      - if: inputs.use_mnt == true && inputs.os != 'windows'
+        run: echo "startup --output_base=/mnt/bazel" >> /home/runner/.bazelrc
       - name: Setup Fluxbox and Xvfb
         if: inputs.os == 'ubuntu' && inputs.browser != ''
         run: |

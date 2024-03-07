@@ -27,3 +27,4 @@ jobs:
       caching: false
       ruby-version: jruby-9.4.5.0
       run: ./scripts/github-actions/ci-build.sh
+      use_mnt: true

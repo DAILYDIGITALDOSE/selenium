@@ -55,5 +55,4 @@ sudo rm -rf /usr/local/lib/android
 df -h
 
 sudo mkdir /mnt/bazel
-sudo choown runner:docker /mnt/bazel
-echo
+sudo chown runner:docker /mnt/bazel
