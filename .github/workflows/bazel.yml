@@ -150,6 +150,7 @@ jobs:
         run: sudo safaridriver --enable
       - name: Run Bazel
         run: ${{ inputs.run }}
+      - run: df -kh
       - name: Print disk space
         uses: mxschmitt/action-tmate@v3
         with:
